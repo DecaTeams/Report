@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Reporte.Models.Person>
+
+@{
+    Layout = null;
+
+    int counter = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <a href="@Url.Action("Create")" class="btn btn-lg btn-info">Create</a>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsMarreid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @counter
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsMarreid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+            counter++;
+        }
+
+    </table>
+</div>
+
+</body>
+</html>
