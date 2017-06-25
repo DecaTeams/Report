@@ -144,12 +144,15 @@
     <Compile Include="Migrations\201706251426316_foreinKey_gender.Designer.cs">
       <DependentUpon>201706251426316_foreinKey_gender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706251502459_foreinKey_Department.cs" />
+    <Compile Include="Migrations\201706251502459_foreinKey_Department.Designer.cs">
+      <DependentUpon>201706251502459_foreinKey_Department.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\PeopleViewModel.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -180,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706251426316_foreinKey_gender.resx">
       <DependentUpon>201706251426316_foreinKey_gender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706251502459_foreinKey_Department.resx">
+      <DependentUpon>201706251502459_foreinKey_Department.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -58,7 +58,7 @@ namespace Reporte.Repository
 
             // Configure Employee and Department
             modelBuilder.Entity<Employee>()
-                        .HasRequired(e => e.Departments)
+                        .HasRequired(e => e.Department)
                         .WithMany(d => d.Employees);
 
             // Configure Manager and Department
