@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201706260158500_tesst.Designer.cs">
       <DependentUpon>201706260158500_tesst.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706260808475_test.cs" />
+    <Compile Include="Migrations\201706260808475_test.Designer.cs">
+      <DependentUpon>201706260808475_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -213,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706260158500_tesst.resx">
       <DependentUpon>201706260158500_tesst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706260808475_test.resx">
+      <DependentUpon>201706260808475_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

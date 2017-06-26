@@ -52,9 +52,9 @@ namespace Reporte.Repository
 
             // Configure Employee and Manager
             modelBuilder.Entity<Manager>()
-                        .HasKey(m => m.Id)
-                        .Property(m => m.Id)
-                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                        .HasKey(m => m.Id);
+                        //.Property(m => m.Id)
+                        //.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             modelBuilder.Entity<Employee>()
                         .HasRequired(e => e.Manager)
