@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\GendersController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -142,6 +143,18 @@
     <Compile Include="Migrations\201706260115002_set.cs" />
     <Compile Include="Migrations\201706260115002_set.Designer.cs">
       <DependentUpon>201706260115002_set.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706260118354_nullable.cs" />
+    <Compile Include="Migrations\201706260118354_nullable.Designer.cs">
+      <DependentUpon>201706260118354_nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706260127532_set_config.cs" />
+    <Compile Include="Migrations\201706260127532_set_config.Designer.cs">
+      <DependentUpon>201706260127532_set_config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706260158500_tesst.cs" />
+    <Compile Include="Migrations\201706260158500_tesst.Designer.cs">
+      <DependentUpon>201706260158500_tesst.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -167,6 +180,11 @@
     <Content Include="Views\People\Details.cshtml" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +204,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706260115002_set.resx">
       <DependentUpon>201706260115002_set.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706260118354_nullable.resx">
+      <DependentUpon>201706260118354_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706260127532_set_config.resx">
+      <DependentUpon>201706260127532_set_config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706260158500_tesst.resx">
+      <DependentUpon>201706260158500_tesst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

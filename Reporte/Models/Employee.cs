@@ -11,9 +11,12 @@ namespace Reporte.Models
     {
         [Key]
         [ForeignKey("Person")]
+        [Required]
+        [Display(Name = "Employee Name")]
         public int Id { get; set; }
         [ForeignKey("Department")]
-        public int DepartmentId { get; set; }
+        [Display(Name = "Department Name")]
+        public int? DepartmentId { get; set; }
 
         public virtual Person Person { get; set; }
         public virtual Manager Manager { get; set; }

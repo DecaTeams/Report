@@ -62,15 +62,14 @@ namespace Reporte.Repository
 
             // Configure Employee and Department
             modelBuilder.Entity<Employee>()
-                        .HasRequired(e => e.Department)
+                        .HasOptional(e => e.Department)
                         .WithMany(d => d.Employees)
                         .HasForeignKey(d => d.DepartmentId);
 
             // Configure Manager and Department
             modelBuilder.Entity<Department>()
                         .HasKey(d => d.Id);
-            //.HasRequired(m => m.Manager)
-            //.WithRequiredPrincipal(m => m.Department);
+            
             modelBuilder.Entity<Manager>()
                         .HasRequired(m => m.Department)
                         .WithRequiredPrincipal(d => d.Manager);

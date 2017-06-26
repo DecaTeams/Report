@@ -14,7 +14,9 @@ namespace Reporte.Models
             Employees = new HashSet<Employee>();
         }
         [Key]
+        [Display(Name = "Department ID")]
         public int Id { get; set; }
+        [Display(Name = "Department Name")]
         public string Name { get; set; }
 
         public virtual Manager Manager { get; set; }

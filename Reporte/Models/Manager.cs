@@ -10,6 +10,7 @@ namespace Reporte.Models
     public class Manager
     {
         [Key]
+        [Display(Name = "Manager Name")]
         public int Id { get; set; }
 
         public virtual Employee Employee { get; set; }
