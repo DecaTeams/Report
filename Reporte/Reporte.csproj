@@ -123,30 +123,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Genders\Create.cshtml" />
-    <Content Include="Views\Genders\Delete.cshtml" />
-    <Content Include="Views\Genders\Details.cshtml" />
-    <Content Include="Views\Genders\Edit.cshtml" />
-    <Content Include="Views\Genders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GendersController.cs" />
-    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706251246127_initial.cs" />
-    <Compile Include="Migrations\201706251246127_initial.Designer.cs">
-      <DependentUpon>201706251246127_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706251426316_foreinKey_gender.cs" />
-    <Compile Include="Migrations\201706251426316_foreinKey_gender.Designer.cs">
-      <DependentUpon>201706251426316_foreinKey_gender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706251502459_foreinKey_Department.cs" />
-    <Compile Include="Migrations\201706251502459_foreinKey_Department.Designer.cs">
-      <DependentUpon>201706251502459_foreinKey_Department.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -161,11 +142,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\People\Create.cshtml" />
-    <Content Include="Views\People\Delete.cshtml" />
-    <Content Include="Views\People\Details.cshtml" />
-    <Content Include="Views\People\Edit.cshtml" />
-    <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,17 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706251246127_initial.resx">
-      <DependentUpon>201706251246127_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706251426316_foreinKey_gender.resx">
-      <DependentUpon>201706251426316_foreinKey_gender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706251502459_foreinKey_Department.resx">
-      <DependentUpon>201706251502459_foreinKey_Department.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -26,6 +26,7 @@ namespace Reporte.Models
         public int Age { get; set; }
         [ForeignKey("Gender")]
         public int GenderId { get; set; }
+        
         public virtual Gender Gender { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Student Student { get; set; }

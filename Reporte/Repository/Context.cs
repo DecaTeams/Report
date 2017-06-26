@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -17,8 +18,8 @@ namespace Reporte.Repository
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Manager> Managers { get; set; }
-        public DbSet<Department> Departments { get; set; }
+        //public DbSet<Manager> Managers { get; set; }
+        //public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,24 +50,30 @@ namespace Reporte.Repository
                         .HasRequired(p => p.Student)
                         .WithRequiredPrincipal(s => s.Person);
 
-            // Configure Employee and Manager
-            modelBuilder.Entity<Manager>()
-                        .HasKey(m => m.Id);
-            modelBuilder.Entity<Employee>()
-                        .HasRequired(p => p.Manager)
-                        .WithRequiredPrincipal(m => m.Employee);
+            //// Configure Employee and Manager
+            //modelBuilder.Entity<Manager>()
+            //            .HasKey(m => m.Id)
+            //            .Property(m => m.Id)
+            //            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
-            // Configure Employee and Department
-            modelBuilder.Entity<Employee>()
-                        .HasRequired(e => e.Department)
-                        .WithMany(d => d.Employees);
+            //modelBuilder.Entity<Employee>()
+            //            .HasRequired(e => e.Manager)
+            //            .WithRequiredPrincipal(m => m.Employee);
 
-            // Configure Manager and Department
-            modelBuilder.Entity<Department>()
-                        .HasKey(d => d.Id);
-            modelBuilder.Entity<Manager>()
-                        .HasRequired(m => m.Department)
-                        .WithRequiredPrincipal(d => d.Manager);
+            //// Configure Employee and Department
+            //modelBuilder.Entity<Employee>()
+            //            .HasRequired(e => e.Department)
+            //            .WithMany(d => d.Employees)
+            //            .HasForeignKey(d => d.DepartmentId);
+
+            //// Configure Manager and Department
+            //modelBuilder.Entity<Department>()
+            //            .HasKey(d => d.Id);
+            //            //.HasRequired(m => m.Manager)
+            //            //.WithRequiredPrincipal(m => m.Department);
+            //modelBuilder.Entity<Manager>()
+            //            .HasRequired(m => m.Department)
+            //            .WithRequiredPrincipal(d => d.Manager);
 
         }
     }
