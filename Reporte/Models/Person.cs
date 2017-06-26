@@ -19,7 +19,7 @@ namespace Reporte.Models
         [Required]
         public string LName { get; set; }
         [Display(Name = "Full Name")]
-        public string Name => FName + LName;
+        public string Name => FName + " "+ LName;
         [Display(Name = "Marreied")]
         public bool IsMarreid { get; set; }
         [Required]
