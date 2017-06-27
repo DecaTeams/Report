@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <a href="@Url.Action("Index","People")" style="color: #43A047; font-size: 24px;">
+        <div class="col-md-3 text-center">
+            <div class="page-header">
+                <span class="glyphicon glyphicon-user"></span>
+            </div>
+            <div class="tab-content">
+                People
+            </div>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","Employees")" style="color: #b71c1c; font-size: 24px;">
+        <div class="col-md-3 text-center">
+            <div class="page-header">
+                <span class="glyphicon glyphicon-pawn"></span>
+            </div>
+            <div class="tab-content">
+                Employees
+            </div>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","Managers")" style="color: #1976D2; font-size: 24px;">
+        <div class="col-md-3 text-center">
+            <div class="page-header">
+                <span class="glyphicon glyphicon-queen"></span>
+            </div>
+            <div class="tab-content">
+                Managers
+            </div>
+        </div>
+    </a>
+    <a href="@Url.Action("Index","Departments")" style="color: #546E7A; font-size: 24px;">
+        <div class="col-md-3 text-center">
+            <div class="page-header">
+                <span class="glyphicon glyphicon-tent"></span>
+            </div>
+            <div class="tab-content">
+                Departments
+            </div>
+        </div>
+    </a>
+</div>
+
