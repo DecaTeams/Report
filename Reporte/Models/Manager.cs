@@ -13,7 +13,11 @@ namespace Reporte.Models
         [Display(Name = "Manager Name")]
         public int Id { get; set; }
 
-        public virtual Employee Employee { get; set; }
+	    [Range(0,10000)]
+	    [Column(TypeName = "numeric")]
+		public int Salary { get; set; }
+
+	    public virtual Employee Employee { get; set; }
         public virtual Department Department { get; set; }
     }
 }

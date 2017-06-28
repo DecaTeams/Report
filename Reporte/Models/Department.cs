@@ -16,8 +16,10 @@ namespace Reporte.Models
         [Key]
         [Display(Name = "Department ID")]
         public int Id { get; set; }
+
         [Display(Name = "Department Name")]
-        public string Name { get; set; }
+        [RegularExpression(@"^([[\p{L}\s]{2,}|[\p{L}]{2,}])$")]
+		public string NameDepartment { get; set; }
 
         public virtual Manager Manager { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }

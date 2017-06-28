@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<Reporte.Models.Department>
+﻿@model IEnumerable<Reporte.Models.Department>
 
 @{
     ViewBag.Title = "Index";
@@ -8,19 +7,16 @@
 
 <h2>Index</h2>
 
-<div class="col-md-12">
-@Html.Action("GridViewPartial")
-</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Manager.Id)
+            @Html.DisplayNameFor(model => model.Manager.Employee.Person.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.NameDepartment)
         </th>
         <th></th>
     </tr>
@@ -31,7 +27,7 @@
             @Html.DisplayFor(modelItem => item.Manager.Employee.Person.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.NameDepartment)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

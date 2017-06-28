@@ -7,13 +7,13 @@ namespace Reporte.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class set : IMigrationMetadata
+    public sealed partial class delete : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(set));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(delete));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706260115002_set"; }
+            get { return "201706281326202_delete"; }
         }
         
         string IMigrationMetadata.Source

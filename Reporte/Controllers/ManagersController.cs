@@ -49,7 +49,7 @@ namespace Reporte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id")] Manager manager)
+        public ActionResult Create([Bind(Include = "Id,Salary")] Manager manager)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Reporte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id")] Manager manager)
+        public ActionResult Edit([Bind(Include = "Id,Salary")] Manager manager)
         {
             if (ModelState.IsValid)
             {

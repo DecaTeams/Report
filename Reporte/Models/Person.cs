@@ -13,13 +13,19 @@ namespace Reporte.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "First Name")]
-        [Required]
-        public string FName { get; set; }
+        [RegularExpression(@"^([[\p{L}\s]{2,}|[\p{L}]{2,}])$")]
+		[Required]
+        public string FirstName { get; set; }
         [Display(Name = "Last Name")]
-        [Required]
-        public string LName { get; set; }
+        [RegularExpression(@"^([[\p{L}\s]{2,}|[\p{L}]{2,}])$")]
+		[Required]
+        public string LastName { get; set; }
         [Display(Name = "Full Name")]
-        public string Name => FName + " "+ LName;
+		[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public string Name {
+	        get { return FirstName + " " + LastName; }
+	         private set { }
+        }
         [Display(Name = "Marreied")]
         public bool IsMarreid { get; set; }
         [Required]
@@ -29,6 +35,5 @@ namespace Reporte.Models
         
         public virtual Gender Gender { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Student Student { get; set; }
     }
 }

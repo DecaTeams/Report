@@ -16,7 +16,6 @@ namespace Reporte.Repository
         }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Gender> Genders { get; set; }
-        public DbSet<Student> Students { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -40,15 +39,6 @@ namespace Reporte.Repository
                         // .WithRequiredPrincipal(e => e.Person) makes Person property of 
                         // Employee entity as required.
                         .WithRequiredPrincipal(e => e.Person);
-
-            // Configure Person and Student
-            modelBuilder.Entity<Student>()
-                        .HasKey(s => s.Id);
-            modelBuilder.Entity<Person>()
-                        // .HasRequired(p => p.Student) makes Employee property of 
-                        // Person entity as required.
-                        .HasRequired(p => p.Student)
-                        .WithRequiredPrincipal(s => s.Person);
 
             // Configure Employee and Manager
             modelBuilder.Entity<Manager>()

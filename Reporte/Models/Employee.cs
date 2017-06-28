@@ -14,6 +14,10 @@ namespace Reporte.Models
         [Required]
         [Display(Name = "Employee Name")]
         public int Id { get; set; }
+	    //[Range(typeof(decimal), "0", "79228162514264337593543950335")]
+		[Range(0,10000)]
+		[Column(TypeName = "numeric")]
+		public int Salary { get; set; }
         [ForeignKey("Department")]
         [Display(Name = "Department Name")]
         public int? DepartmentId { get; set; }

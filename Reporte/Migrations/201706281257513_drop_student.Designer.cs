@@ -7,13 +7,13 @@ namespace Reporte.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class nullable : IMigrationMetadata
+    public sealed partial class drop_student : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(drop_student));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706260118354_nullable"; }
+            get { return "201706281257513_drop_student"; }
         }
         
         string IMigrationMetadata.Source

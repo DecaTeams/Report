@@ -1,5 +1,4 @@
-﻿using DevExpress.Web.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,15 +15,51 @@ namespace Reporte.Controllers
     {
         private Context db = new Context();
 
-        // GET: Employees
-        public ActionResult Index()
-        {
-            var employees = db.Employees.Include(e => e.Department).Include(e => e.Person);
-            return View(employees.ToList());
-        }
+	    private readonly int _pageSize = 50;
 
-        // GET: Employees/Details/5
-        public ActionResult Details(int? id)
+
+		// GET: Employees
+		public ActionResult Index()
+		{
+			var employees = db.Employees.OrderBy(e => e.Person.Name)
+										.Include(e => e.Department);
+
+			//var skip = (5 - 1) * _pageSize;
+			//var employees = db.Employees.OrderBy(e => e.Person.Name)
+			//	.Include(e => e.Department)
+			//	.Skip(skip)
+			//	.Take(10)
+			//	.ToArray();
+
+			//ViewBag.PreviousPage = 0;
+			//ViewBag.NextPage = (Decimal.Divide(employees.Count(), _pageSize) > 1) ? 2 : -1;
+
+			return View(employees.ToList());
+        }
+		//---------------------------------------------------
+	    [Route("page/{page:int}")]
+	    public ActionResult Page(int page = 1)
+	    {
+		    if (page < 50)
+		    {
+			    return RedirectToAction("index");
+		    }
+		    var skip = (5 - 1) * _pageSize;
+		    var employees = db.Employees.OrderBy(e => e.Person.Name)
+										.Include(e => e.Department)
+										.Skip(skip)
+										.Take(10)
+										.ToArray();
+
+			ViewBag.PreviousPage = page - 1;
+		    ViewBag.NextPage = (Decimal.Divide(employees.Count(), _pageSize) > page) ? page + 1 : -1;
+
+		    return View("index", employees);
+	    }
+		//---------------------------------------------------
+
+		// GET: Employees/Details/5
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -41,8 +76,8 @@ namespace Reporte.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name");
-            ViewBag.Id = new SelectList(db.Persons, "Id", "FName");
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "NameDepartment");
+            ViewBag.Id = new SelectList(db.Persons, "Id", "FirstName");
             return View();
         }
 
@@ -51,7 +86,7 @@ namespace Reporte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DepartmentId")] Employee employee)
+        public ActionResult Create([Bind(Include = "Id,Salary,DepartmentId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -60,8 +95,8 @@ namespace Reporte.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", employee.DepartmentId);
-            ViewBag.Id = new SelectList(db.Persons, "Id", "FName", employee.Id);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "NameDepartment", employee.DepartmentId);
+            ViewBag.Id = new SelectList(db.Persons, "Id", "FirstName", employee.Id);
             return View(employee);
         }
 
@@ -77,8 +112,8 @@ namespace Reporte.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", employee.DepartmentId);
-            ViewBag.Id = new SelectList(db.Persons, "Id", "FName", employee.Id);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "NameDepartment", employee.DepartmentId);
+            ViewBag.Id = new SelectList(db.Persons, "Id", "FirstName", employee.Id);
             return View(employee);
         }
 
@@ -87,7 +122,7 @@ namespace Reporte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DepartmentId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,Salary,DepartmentId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -95,8 +130,8 @@ namespace Reporte.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", employee.DepartmentId);
-            ViewBag.Id = new SelectList(db.Persons, "Id", "FName", employee.Id);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "NameDepartment", employee.DepartmentId);
+            ViewBag.Id = new SelectList(db.Persons, "Id", "FirstName", employee.Id);
             return View(employee);
         }
 
