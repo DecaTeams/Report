@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Reporte.Models.Employee>
+@{
+    var totalSalary = 0;
+    var counter = 0;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    
+</head>
+<body>
+<h2> Report</h2>
+<br/>
+<div class="container">
+    <table class="table table-striped">
+
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Manager
+            </th>
+            <th>
+                Employee
+            </th>
+            <th>
+                Salary
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @counter
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Manager.Employee.Person.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Person.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+            </tr>
+            counter++;
+        }
+        <tr>
+            <td >
+                Total Salary:
+            </td>
+            <td>
+                @{var Employee = Model.Select(e => e.Salary).Sum(); }
+                @Employee
+            </td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+
+    </table>
+</div>
+
+
+<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
+

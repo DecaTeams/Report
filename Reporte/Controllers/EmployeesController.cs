@@ -6,8 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Reporte.Models;
 using Reporte.Repository;
+using Rotativa;
+using Rotativa.Options;
 
 namespace Reporte.Controllers
 {
@@ -19,44 +22,39 @@ namespace Reporte.Controllers
 
 
 		// GET: Employees
-		public ActionResult Index()
+		public ActionResult Index(int? Page_No)
 		{
+			
 			var employees = db.Employees.OrderBy(e => e.Person.Name)
 										.Include(e => e.Department);
 
-			//var skip = (5 - 1) * _pageSize;
-			//var employees = db.Employees.OrderBy(e => e.Person.Name)
-			//	.Include(e => e.Department)
-			//	.Skip(skip)
-			//	.Take(10)
-			//	.ToArray();
 
-			//ViewBag.PreviousPage = 0;
-			//ViewBag.NextPage = (Decimal.Divide(employees.Count(), _pageSize) > 1) ? 2 : -1;
+			int Size_Of_Page = 15;
+			int No_Of_Page = (Page_No ?? 1);
 
-			return View(employees.ToList());
+			return View(employees.ToPagedList(No_Of_Page, Size_Of_Page));
         }
-		//---------------------------------------------------
-	    [Route("page/{page:int}")]
-	    public ActionResult Page(int page = 1)
+		// -------------------------------------------------------------
+		// http://madalgo.au.dk/~jakobt/wkhtmltoxdoc/wkhtmltopdf-0.9.9-doc.html
+		public ActionResult Print()
 	    {
-		    if (page < 50)
-		    {
-			    return RedirectToAction("index");
-		    }
-		    var skip = (5 - 1) * _pageSize;
-		    var employees = db.Employees.OrderBy(e => e.Person.Name)
+			var employees = db.Employees.OrderBy(e => e.Person.Name)
 										.Include(e => e.Department)
-										.Skip(skip)
-										.Take(10)
-										.ToArray();
+										.Skip(500);
+			string footer = "--footer-center \"Printed on: " + DateTime.Now.Date.ToString("MM/dd/yyyy") + "  Page: [page]/[toPage]\"" + " --footer-line --footer-font-size \"10\" --footer-spacing 6 --footer-font-name \"calibri light\"";
 
-			ViewBag.PreviousPage = page - 1;
-		    ViewBag.NextPage = (Decimal.Divide(employees.Count(), _pageSize) > page) ? page + 1 : -1;
 
-		    return View("index", employees);
-	    }
-		//---------------------------------------------------
+			return new ViewAsPdf("Print", employees.ToList())
+		    {
+			    FileName = "PDF_Output.pdf",
+			    PageOrientation = Orientation.Landscape,
+			    MinimumFontSize = 12,
+			    //PageMargins  = new Margins(5,5,5,5),
+			    PageSize = Size.A4,
+			    CustomSwitches = footer
+		    };
+		}
+	    // -------------------------------------------------------------
 
 		// GET: Employees/Details/5
 		public ActionResult Details(int? id)
